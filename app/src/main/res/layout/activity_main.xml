@@ -8,20 +8,33 @@
     <data>
 
     </data>
-    <LinearLayout
-        android:layout_height="match_parent"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                tools:context=".MainActivity">
 
-        <fragment
-            android:id="@+id/myNavHostFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
+                <fragment
+                    android:id="@+id/myNavHostFragment"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:navGraph="@navigation/navigation"
+                    app:defaultNavHost="true" />
+            </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:navGraph="@navigation/navigation"
-            app:defaultNavHost="true" />
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/drawer_menu"/>
 
-    </LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>
 

@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.trivialstart.databinding.FragmentTitleBinding
 
 private val FragmentTitleBinding.root: View?
@@ -32,8 +33,21 @@ class TitleFragement : Fragment() {
         binding.playButton.setOnClickListener{ view : View->
             view.findNavController().navigate(R.id.action_titleFragement3_to_gameFragment)
         }
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.about_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item!!,
+            view!!.findNavController())
+        super.onOptionsItemSelected(item)
+
     }
 
 }
